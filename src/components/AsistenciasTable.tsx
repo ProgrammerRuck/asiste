@@ -359,7 +359,7 @@ export default function AsistenciasTable() {
 
   return (
     <Box sx={{ width: '100%', mt: 4 }}>
-      <Typography variant="h5" gutterBottom fontWeight="600" align="center">
+      <Typography variant="h5" gutterBottom fontWeight="600" align="center" color="#000000">
         Asistencias del día • {asistencias.length} presentes
       </Typography>
 

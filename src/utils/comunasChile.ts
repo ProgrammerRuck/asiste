@@ -12,7 +12,10 @@ export const comunasChile = [
 
   // Biobío
   'Concepción', 'Talcahuano', 'Chiguayante', 'San Pedro de la Paz', 'Coronel', 'Lota',
-  'Penco', 'Tomé', 'Los Ángeles',
+  'Penco', 'Tomé', 'Los Ángeles', 'Hualpén', 'Cabrero', 'Arauco',  'Hualqui', 'Florida',
+  'Cañete', 'Lebu', 'Contulmo', 'Curanilahue', 'Los Alamos', 'Tirúa', 'Alto Biobío', 'Antuco',
+  'Laja', 'Nacimiento', 'Negrete', 'Quilaco', 'San Rosendo', 'Santa Bárbara', 'Tucapel', 'Yumbel',
+  'Santa Juana',
 
   // Otras regiones
   'Antofagasta', 'Calama', 'Iquique', 'Arica', 'La Serena', 'Coquimbo', 'Ovalle',

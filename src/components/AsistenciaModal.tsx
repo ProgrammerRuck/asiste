@@ -76,7 +76,7 @@ export default function AsistenciaModal() {
         <Typography variant="body1" sx={{ mt: 2 }}>
           <LocationOnIcon fontSize="small" /> {comuna}
         </Typography>
-        <Typography variant="body2" color="#ffffff" sx={{ mt: 2 }}>
+        <Typography variant="body2" color="#000000" sx={{ mt: 2 }}>
           Puedes cerrar esta pestaña
         </Typography>
       </Box>
@@ -85,7 +85,7 @@ export default function AsistenciaModal() {
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 420, mx: 'auto', mt: 5 }}>
-      <Typography variant="h5" gutterBottom align="center">
+      <Typography variant="h5" gutterBottom align="center" color="#000000">
         Confirma tu asistencia
       </Typography>
 
@@ -105,20 +105,20 @@ export default function AsistenciaModal() {
           maxWidth: '500px', // Ancho máximo para no ocupar toda la pantalla
           width: '100%',
           '& .MuiInputBase-input': {
-            color: 'white',
+            color: 'black',
           },
           '& .MuiInputLabel-root': {
             color: 'rgba(255, 255, 255, 0.7)',
           },
           '& .MuiInputLabel-root.Mui-focused': {
-            color: 'white',
+            color: 'black',
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
               borderColor: 'rgba(255, 255, 255, 0.5)',
             },
             '&:hover fieldset': {
-              borderColor: 'white',
+              borderColor: 'black',
             },
             '&.Mui-focused fieldset': {
               borderColor: '#4caf50',
