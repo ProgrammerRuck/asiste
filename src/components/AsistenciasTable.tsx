@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { DataGrid, } from '@mui/x-data-grid'
+import {
+  DataGrid,
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarQuickFilter,
+} from '@mui/x-data-grid';
 import { 
   Paper, Typography, Box, Button,
   Dialog,
@@ -233,37 +238,40 @@ export default function AsistenciasTable() {
     }
   }
 
-  useEffect(() => {
-    cargarAsistencias()
-
-    const channel = supabase
-      .channel('asistencias-realtime')
-      .on(
-        'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'asistencias' },
-        (payload) => {
-          const nuevo = payload.new as any
-          if (nuevo?.id) {
-            setAsistencias((prev) => [
-              {
-                id: nuevo.id,
-                nombre: nuevo.nombre || 'Sin nombre',
-                comuna: validarComuna(nuevo.comuna || 'Sin comuna'),
-                fecha: nuevo.fecha,
-                hora: nuevo.hora,
-                creado_en: nuevo.creado_en,
-              },
-              ...prev,
-            ])
-          }
+useEffect(() => {
+  cargarAsistencias()
+  
+  const channel = supabase
+    .channel('asistencias-realtime')
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'asistencias' },
+      (payload) => {
+        const nuevo = payload.new as any
+        if (nuevo?.id) {
+          setAsistencias((prev) => [
+            {
+              id: nuevo.id,
+              nombre: nuevo.nombre || 'Sin nombre',
+              comuna: validarComuna(nuevo.comuna || 'Sin comuna'),
+              fecha: nuevo.fecha,
+              hora: nuevo.hora,
+              creado_en: nuevo.creado_en,
+            },
+            ...prev,
+          ])
         }
-      )
-      .subscribe()
+      }
+    )
+    .subscribe()
 
-    return () => {
-      supabase.removeAllChannels()
-    }
-  }, [])
+  return () => {
+    // Usar channel para limpiar específicamente
+    channel.unsubscribe()
+    // O mantener removeAllChannels si prefieres
+    // supabase.removeAllChannels()
+  }
+}, [])
 
   // Función para formatear fecha
   const formatearFecha = (fechaString: string) => {
@@ -347,13 +355,13 @@ export default function AsistenciasTable() {
       field: 'fecha',
       headerName: 'Fecha',
       width: 120,
-      renderCell: (params) => formatearFecha(params.value)
+      renderCell: (params: any) => formatearFecha(params.value) // TIPO CORREGIDO
     },
     {
       field: 'hora',
       headerName: 'Hora',
       width: 120,
-      renderCell: (params) => formatearHora(params.value)
+      renderCell: (params: any) => formatearHora(params.value) // TIPO CORREGIDO
     },
   ]
 

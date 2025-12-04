@@ -15,15 +15,40 @@ function App() {
   }, [])
 
   return (
-    <Container maxWidth=" ">
+    <Container maxWidth="lg">
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          mt: 3, 
+          mb: 2 
+        }}>
+          <img 
+            src="/logo_udec_2.png" 
+            alt="Logo Universidad de Concepción" 
+            style={{ 
+              maxWidth: '200px', 
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+          />
+        </Box>
+     
       <Box sx={{ my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom align="center" color="#1976d2" fontWeight="bold">
-          Registro de Asistencia QR
+        <Typography 
+          variant="h2" 
+          component="h1" 
+          gutterBottom 
+          align="center" 
+          color="#1976d2" 
+          fontWeight="bold"
+          sx={{ 
+            mt: 1, // Reduce el margen superior ya que el logo lo tiene
+            fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' } // Responsive
+          }}
+        >
+          Registro de Asistencia
         </Typography>
-        <Typography variant="h6" align="center" color="#000000" paragraph>
-          La forma más rápida y moderna de tomar asistencia con QR dinámico
-        </Typography>
-
+        
         {esPaginaEscaneo ? (
           <>
             <Alert severity="success" sx={{ mb: 3 }}>
@@ -42,9 +67,9 @@ function App() {
             </Box>
           </>
         )}
-          <Box sx={{ textAlign: 'center', mt: 2, color: '#000000' }}>
+        <Box sx={{ textAlign: 'center', mt: 2, color: '#000000' }}>
           <Typography variant="body2">
-            Desarrollado por Jorge • 2025
+            Desarrollado por Consultora SinergiaDigital • Copyright © 2025
           </Typography>
         </Box>
       </Box>

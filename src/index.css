@@ -31,11 +31,21 @@ body {
   min-width: 320px;
   min-height: 100vh;
   width: 100%;
+  /* Añade estas propiedades para mejor scroll */
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Asegura que todos los elementos respeten el ancho del body */
+* {
+  box-sizing: border-box;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  text-align: center; /* Centra el texto */
+  padding: 0 16px; /* Padding en móvil */
 }
 
 button {
@@ -50,25 +60,54 @@ button {
   transition: border-color 0.25s;
 }
 
-
 button:hover {
   border-color: #646cff;
 }
-button:focus,
 
+button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Media queries para responsividad */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #F59E0B;
   }
   a:hover {
     color: #747bff;
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  body {
+    padding: 16px; /* Agrega padding en móvil */
+    justify-content: flex-start; /* Cambia si necesitas */
+  }
+  
+  h1 {
+    font-size: 2.2em; /* Reduce tamaño en móvil */
+    margin-top: 20px;
+  }
+  
+  button {
+    width: 100%; /* Botones al 100% en móvil */
+    max-width: 300px; /* Pero con un máximo */
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  button {
+    padding: 0.8em 1.2em; /* Más padding para fácil tap */
   }
 }
